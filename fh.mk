@@ -9,7 +9,10 @@ $(call inherit-product, vendor/fh/config/common_full_phone.mk)
 $(call inherit-product, device/huawei/angler/aosp_angler.mk)
 $(call inherit-product, vendor/nepo/my-apps.mk)
 
-## Device identifier. This must come after all inclusions
+# Disable default camera (CNM)
+DISABLE_CNM := true
+
+# Device identifier. This must come after all inclusions
 PRODUCT_NAME := fh_angler
 PRODUCT_BRAND := Google
 PRODUCT_MODEL := Nexus 6P
