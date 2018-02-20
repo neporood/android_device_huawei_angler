@@ -9,8 +9,9 @@ $(call inherit-product, vendor/fh/config/common_full_phone.mk)
 $(call inherit-product, device/huawei/angler/aosp_angler.mk)
 $(call inherit-product, vendor/nepo/my-apps.mk)
 
-# Disable default camera (CNM)
+# Disable default FH apps
 DISABLE_CNM := true
+DISABLE_CHROME := true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := fh_angler
