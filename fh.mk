@@ -11,7 +11,7 @@ $(call inherit-product, vendor/nepo/my-apps.mk)
 
 # Disable default FH apps
 DISABLE_CNM := true
-DISABLE_CHROME := true
+DISABLE_CWB := true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := fh_angler
