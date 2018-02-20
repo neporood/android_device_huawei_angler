@@ -1,6 +1,13 @@
 [
  {
-   "repository": "android_kernel_huawei_angler",
-   "target_path": "kernel/huawei/angler"
- }
+   "repository": "HardcoreKernel/angler",
+   "target_path": "kernel/huawei/angler",
+   "branch":      "8.1.0-hardcore3"
+ },
+ {
+    "repository":  "TheMuppets/proprietary_vendor_huawei",
+    "target_path": "vendor/huawei",
+    "branch":      "lineage-15.1"
+  }
 ]
+
