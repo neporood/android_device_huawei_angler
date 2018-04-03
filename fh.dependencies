@@ -2,7 +2,7 @@
  {
    "repository": "HardcoreKernel/angler",
    "target_path": "kernel/huawei/angler",
-   "branch":      "8.1.0-hardcore3"
+   "branch":      "8.1.0-hardcore9"
  },
  {
     "repository":  "TheMuppets/proprietary_vendor_huawei",
