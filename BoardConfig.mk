@@ -1,3 +1,4 @@
+
 #
 # Copyright (C) 2015 The Android Open-Source Project
 #
@@ -29,42 +30,38 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 
+#ENABLE_CPUSETS := true
+
 # Inline kernel building
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/huawei/angler
-TARGET_KERNEL_CONFIG := hardcore_defconfig
-
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-
-TARGET_COMPILE_WITH_MSM_KERNEL := true
+TARGET_KERNEL_CONFIG := lineageos_angler_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=angler androidboot.console=ttyHSL0 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 no_console_suspend 
+BOARD_KERNEL_CMDLINE := androidboot.hardware=angler androidboot.console=ttyHSL0 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 no_console_suspend
 BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
-# Needed for VoLTE
-AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
-AUDIO_FEATURE_ENABLED_DSM_FEEDBACK := true
-
-BOARD_SUPPORTS_SOUND_TRIGGER := true
 
 BOARD_USES_ALSA_AUDIO := true
+# Needed for VoLTE
+AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/angler/bluetooth
 
 BOARD_USES_SECURE_SERVICES := true
 
-BOARD_NEEDS_VENDORIMAGE_SYMLINK := true
-
+#TARGET_NO_RECOVERY := true
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_INFO_FILE := device/huawei/angler/board-info.txt
@@ -100,15 +97,8 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 # Enable auto suspend in poweroff charging to save power
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
+# Disable dex-preoptimization
+WITH_DEXPREOPT := false
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
@@ -121,12 +111,12 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 26503790080
 BOARD_CACHEIMAGE_PARTITION_SIZE := 104857600
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_NEEDS_VENDORIMAGE_SYMLINK := true
 
 TARGET_AUX_OS_VARIANT_LIST := angler
 
 TARGET_RECOVERY_FSTAB = device/huawei/angler/fstab.angler
-# write vendor modules to system
-TARGET_COPY_OUT_VENDOR := system
+TARGET_COPY_OUT_VENDOR := vendor
 TARGET_RELEASETOOLS_EXTENSIONS := device/huawei/angler
 
 BOARD_SEPOLICY_DIRS += \
@@ -160,6 +150,9 @@ WIFI_DRIVER_FW_PATH_AP := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
+# Enable workaround for slow rom flash
+BOARD_SUPPRESS_SECURE_ERASE := true
+
 #NFC
 NXP_CHIP_TYPE := 2
 
@@ -170,5 +163,8 @@ TARGET_FS_CONFIG_GEN += device/huawei/angler/config.fs
 
 DEVICE_MANIFEST_FILE := device/huawei/angler/manifest.xml
 DEVICE_MATRIX_FILE := device/huawei/angler/compatibility_matrix.xml
+
+# Enable workaround for slow rom flash
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 -include vendor/huawei/angler/BoardConfigVendor.mk
