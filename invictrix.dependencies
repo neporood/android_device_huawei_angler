@@ -1,8 +1,8 @@
 [
  {
-   "repository": "LineageOS/android_kernel_huawei_angler",
+   "repository": "neporood/android_kernel_huawei_angler",
    "target_path": "kernel/huawei/angler",
-   "branch":      "lineage-15.1"
+   "branch":      "o-mr1"
  },
  {
     "repository":  "TheMuppets/proprietary_vendor_huawei",
