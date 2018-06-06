@@ -1,8 +1,8 @@
 [
  {
-   "repository": "HardcoreKernel/angler",
+   "repository": "neporood/android_kernel_huawei_angler",
    "target_path": "kernel/huawei/angler",
-   "branch":      "8.1.0-hardcore9"
+   "branch":      "oreo"
  },
  {
     "repository":  "TheMuppets/proprietary_vendor_huawei",
