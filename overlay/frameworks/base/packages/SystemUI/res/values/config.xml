@@ -43,7 +43,7 @@
     </string>
 
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
-    <string name="quick_settings_tiles_stock" translatable="false">        wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,location,nfc,hotspot,inversion,saver,work,cast,night,lte,caffeine,pip,screenshot,adb_network,sound,heads_up,screenrecord,volume,compass,usb_tether,music,expanded_desktop,greenify,weather,sync
+    <string name="quick_settings_tiles_stock" translatable="false">       wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,nfc,location,hotspot,inversion,saver,work,cast,night,adb_network,ambient_display,caffeine,heads_up,livedisplay,reading_mode,sync,usb_tether,volume_panel,lte,screenshot,sound,screenrecord,weather,smartpixels
     </string>
 </resources>
 
