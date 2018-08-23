@@ -8,10 +8,6 @@ $(call inherit-product, vendor/scorpion/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/huawei/angler/aosp_angler.mk)
 
-# Disable default FH apps
-DISABLE_CNM := true
-DISABLE_CWB := true
-
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := scorpion_angler
 PRODUCT_BRAND := Google
