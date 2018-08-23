@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo fh_angler-userdebug
+add_lunch_combo scorpion_angler-userdebug
